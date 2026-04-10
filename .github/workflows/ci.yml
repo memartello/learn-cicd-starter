@@ -29,9 +29,8 @@ jobs:
       - name: Formating
         run: test -z $(go fmt ./...)
 
-      - name: Static Check  
-        uses: dominikh/staticcheck-action@v1
-        with:
-          version: "latest"
-          working-directory: "."
-      
+      - name: Gosec Install 
+        run: go install github.com/securego/gosec/v2/cmd/gosec@latest
+
+      - name: Security Check
+        run: gosec ./...
