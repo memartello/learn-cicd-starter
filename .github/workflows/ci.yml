@@ -29,7 +29,10 @@ jobs:
       - name: Formating
         run: test -z $(go fmt ./...)
 
-      - name: Static Check
-        uses: dominikh/staticcheck-action@v1
-        with:
-          version: "latest"
+      - name: Install staticcheck
+        run: go install honnef.co/go/tools/cmd/staticcheck@latest
+
+      - name: Static Check 
+        run: staticcheck ./...
+
+      
