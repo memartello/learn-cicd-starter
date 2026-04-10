@@ -13,7 +13,7 @@ func TestGetApiKey(t *testing.T) {
 	req.Header.Set("Authorization", "ApiKey your-token")
 
 	got, err := GetAPIKey(req.Header)
-	want := "your-tokens"
+	want := "your-token"
 
 	if err != nil {
 		t.Fatalf("got err %v trying to obtain header", err)
